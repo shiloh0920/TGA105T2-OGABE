@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ZH-tw" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+            name="author"
+            content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.108.0" />
+    <title>OGABE|發表文章</title>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/dist/css/carousel.css" rel="stylesheet" />
+    <link href="/dist/css/my.css" rel="stylesheet" />
+<body>
+<div th:insert="/forumindex"></div>
+<div class="container">
+    <div class="forum_create" style="background-color: #EAE0DA;">
+        <h1> 發表文章</h1>
+    </div>
+    <div class="alert alert-success alert-dismissible" th:unless="${#strings.isEmpty(errmsgs)}">
+        <a class="close" data-bs-dismiss="alert">&times;</a>
+        <strong th:text="${errmsgs}"></strong>
+    </div>
+    <form action="/create" method="post" enctype="multipart/form-data">
+        <div class="mb-1">
+            <label for="article_title" class="form-label">文章標題</label>
+            <input type="text" class="form-control" id="article_title" name="articletitle" >
+            <p class="form-control-static text-danger" th:text="${errmsgsa}"  th:unless="${#strings.isEmpty(errmsgsa)}"></p>
+        </div>
+        <div class="mb-1">
+            <label for="article_type_id" class="form-label" >文章類型</label>
+            <select class="form-select" aria-label="article_type" id="article_type_id" name="articletypeid" >
+                <option th:each="article:${articleall}" th:value="${article.articletypeid}" th:text="${article.articletypedetail}"></option>
+            </select>
+        </div>
+        <div class="mb-1">
+            <label for="article_content" class="form-label">文章內容</label>
+            <textarea class="form-control" id="article_content" rows="10" name="articlecontext"></textarea>
+            <p class="form-control-static text-danger" th:text="${errmsgsb}" th:unless="${#strings.isEmpty(errmsgsb)}"></p>
+        </div>
+        <div>
+            <input type="file" name="file" id="p_file">
+        </div>
+        <div class="forum_btn">
+            <input type="submit"   class="btn btn-outline-secondary">
+            <input type="hidden" name="action" value="insert" class="btn btn-outline-secondary">
+            <a href="/forum" class="btn btn-outline-secondary">返回文章列表</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

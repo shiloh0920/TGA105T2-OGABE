@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/dist/css/bootstrap.min.css"  rel="stylesheet"/>
+ <link href="/dist/css/carousel.css" rel="stylesheet" />
+ <link href="/dist/css/my.css" rel="stylesheet" />
+</head>
+<body>
+<div th:insert="/forumindex"></div>
+<div class="container">
+    <div class="forum_list" style="background-color: #EAE0DA;">
+      <h1>我的文章</h1>
+    </div>
+<table class="table table-bordered table-striped table-hover ">
+      <thead>
+        <tr class="table-dark">
+          <th>文章編號</th>
+          <th>文章種類</th>
+          <th>文章標題</th>
+<!--          <th>View</th>-->
+      </thead>
+      <tbody>
+        <tr th:each="user:${list}" >
+          <td ><a th:text="${user.articleid}" th:href="@{/read/{id}(id=${user.articleid})}" ></a></td>
+          <td th:text="*{user.articleTypeEntity.articletypedetail}"></td>
+          <td th:text="*{user.articletitle}"></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+</div>
+</body>
+</html>

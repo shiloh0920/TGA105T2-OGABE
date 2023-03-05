@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OGABE|尋找文章</title>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/dist/css/carousel.css" rel="stylesheet" />
+    <link href="/dist/css/my.css" rel="stylesheet" />
+</head>   
+<body>
+<div th:include="/forumindex"></div>
+<div class="container">
+    <div class="forum_search" style="background-color: #EAE0DA;">
+        <h1>尋找文章</h1>
+    </div>
+    <ul>
+        <li th:text="${errmsgs}"  class="text-danger" th:unless="${#strings.isEmpty(errmsgs)}"></li>
+        <li th:text="${total}"  class="text-primary" th:unless="${#strings.isEmpty(total)}"></li>
+    </ul>
+    <form class="d-flex" action="/search" method="post" >
+        <input class="form-control " type="search" placeholder="請輸入關鍵字" name="article_search" >
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </form>
+    <div class="forum_search_bar" th:each="articleEnities:${articleEntities}">
+        <h3 class="mt-2 article_title" th:text="${articleEnities.articletitle}"></h3>
+        <p class="article_content" th:text="${articleEnities.articlecontext}"></p>
+                <span class="post_date" th:text="${articleEnities.postdatetime}"></span>
+                <a th:href="@{/read/{id}(id=${articleEnities.articleid})}" href="#" class="link-danger continue" style="margin-right:30px;">繼續閱讀</a>
+    </div>
+    <div class="forum_btn">
+        <a href="/forum" class="btn btn-outline-secondary mt-5">返回文章列表</a>
+    </div>
+</div>
+</body>
+</html>

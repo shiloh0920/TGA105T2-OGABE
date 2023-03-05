@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ZH-tw" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta
+          name="author"
+          content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+  />
+  <meta name="generator" content="Hugo 0.108.0" />
+  <title>OGABE|收藏</title>
+  <link href="/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="/dist/css/carousel.css" rel="stylesheet" />
+  <link href="/dist/css/my.css" rel="stylesheet" />
+  </head>
+  <style>
+  .col{
+  	font-size:70px;
+  	 color: red;
+  	}
+  	.ccc{
+  	font-size:60px;
+  	}
+  </style>
+<body>
+<div th:insert="/forumindex"></div>
+  <div class="container">
+    <div class="forum_collection" style="background-color: #EAE0DA;">
+      <h1>收藏列表</h1>
+    </div>
+    <table class="table table-bordered table-striped table-hover ">
+      <thead>
+        <tr class="table-dark" >
+        	<div th:unless="${#lists.isEmpty(list)}">
+          <th >收藏編號</th>
+          <th>文章作者</th>
+          <th>文章種類</th>
+          <th>文章標題</th>
+          <th>收藏時間</th>
+          <th>繼續閱讀</th>
+          <th class="delete">取消收藏</th>
+          </div>
+          <strong th:if="${#lists.isEmpty(list)}" th:text="系統提醒+':'" class="col"></strong>
+          <strong th:if="${#lists.isEmpty(list)}" th:text="趕緊將喜歡的文章加入我的收藏吧" class="ccc" ></strong>
+      </thead>
+      <tbody>
+        <tr  th:each="col:${list}">
+          <td th:text="*{col.collectionid}"></td>
+          <td th:text="*{col.articleEntity.userVo.username}"></td>
+          <td th:text="${col.articleEntity.articleTypeEntity.articletypedetail}"></td>
+          <td th:text="${col.articleEntity.articletitle}"></td>
+          <td th:text="${col.collectiondate}"></td>
+          <td><button class="btn btn-outline-info" >
+          <a th:href="@{/read/{id}(id=${col.articleEntity.articleid})}" style="text-decoration: none;">瀏覽</a>
+          </button>
+          </td>
+          <td><button class="btn btn-outline-danger" >
+          <a th:href="@{/cancel/{cid}(cid=${col.collectionid})}" style="text-decoration: none; color:red" id="cancel">取消</a>
+          </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="/forum" class="btn btn-outline-secondary" >去逛逛</a>
+  </div>
+
+<script th:inline="javascript">
+// document.querySelector('#cancel').addEventListener("click",function(event){
+// 	event.preventDefault();
+// 	alert("確定刪除嗎")
+// });
+// console.log("測試")
+</script>
+</body>
+</html>
