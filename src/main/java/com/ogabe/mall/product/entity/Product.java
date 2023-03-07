@@ -1,4 +1,4 @@
-package com.ogabe.mall.product.vo;
+package com.ogabe.mall.product.entity;
 
 //import javax.persistence.Column;
 //import javax.persistence.Entity;

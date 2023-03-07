@@ -7,12 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
-
-import org.apache.commons.collections4.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.parser.Part;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,9 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ogabe.mallsp.product.service.ProductService;
-import com.ogabe.mallsp.product.vo.Product;
-import com.ogabe.mallsp.util.OgabeConstants;
+import com.ogabe.mall.product.entity.Product;
+import com.ogabe.mall.product.service.ProductService;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+
+import org.apache.commons.collections4.map.HashedMap;
+
+import com.ogabe.mall.product.service.ProductService;
+import com.ogabe.mall.util.OgabeConstants;
 
 @RestController
 @RequestMapping(path = {OgabeConstants.PRODUCT_API})

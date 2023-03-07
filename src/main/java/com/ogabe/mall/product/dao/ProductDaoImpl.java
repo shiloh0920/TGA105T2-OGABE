@@ -10,7 +10,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.ogabe.mallsp.product.vo.Product;
+import com.ogabe.mall.product.entity.Product;
 
 
 

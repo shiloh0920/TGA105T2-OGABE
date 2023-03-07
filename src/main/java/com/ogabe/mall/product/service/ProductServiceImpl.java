@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ogabe.mallsp.product.dao.ProductDao;
-import com.ogabe.mallsp.product.vo.Product;
+import com.ogabe.mall.product.dao.ProductDao;
+import com.ogabe.mall.product.entity.Product;
 
 
 @Service

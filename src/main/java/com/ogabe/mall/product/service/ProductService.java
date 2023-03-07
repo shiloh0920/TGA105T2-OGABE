@@ -2,7 +2,7 @@ package com.ogabe.mall.product.service;
 
 import java.util.List;
 
-import com.ogabe.mallsp.product.vo.Product;
+import com.ogabe.mall.product.entity.Product;
 
 public interface ProductService {
 

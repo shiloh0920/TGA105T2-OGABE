@@ -2,14 +2,14 @@ package com.ogabe.mall.product.dao;
 
 import java.util.List;
 
-import com.ogabe.mallsp.product.vo.Product;
+import com.ogabe.mall.product.entity.Product;
 
 public interface ProductDao {
 	Integer insert(Product product);
 
 //	ProductDao selectByProductIdAndProduct(ProductDaoImpl product);
 
-	Integer update(com.ogabe.mallsp.product.vo.Product product);
+	Integer update(com.ogabe.mall.product.entity.Product product);
 
 //	Integer delete(ProductDao product);
 

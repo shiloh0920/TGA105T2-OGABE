@@ -2,13 +2,16 @@ package com.ogabe.mall.product.dao;
 
 import java.util.List;
 
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.PersistenceContext;
+//import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-import com.ogabe.mallsp.product.vo.Product;
+import com.ogabe.mall.product.entity.Product;
+
+
 
 @Repository
 public class ProductDaoHibernate implements ProductDao {
